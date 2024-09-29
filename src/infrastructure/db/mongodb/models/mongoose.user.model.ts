@@ -13,11 +13,11 @@ export class MongooseUserModel implements IUserModel {
 
   async create(user: SUser): Promise<SUser> {
     const newUser = new this.userModel(user);
-    return newUser.save();
+    return await newUser.save();
   }
 
   async findByName(name: string): Promise<SUser[]> {
-    return this.userModel
+    return await this.userModel
       .find({ name: { $regex: name, $options: 'i' } })
       .exec();
   }

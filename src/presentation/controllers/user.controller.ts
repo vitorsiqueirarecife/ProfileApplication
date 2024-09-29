@@ -15,8 +15,8 @@ export class UserController {
   async createUser(@Body() createUserDto: CreateUserDto) {
     const { email, name, password } = createUserDto;
 
-    this.userService.create({
-      id: Math.random().toString(36).substr(2, 9), //@TODO use uuid
+    await this.userService.create({
+      id: '',
       email,
       name,
       password,
