@@ -8,12 +8,18 @@ import { USER_SERVICE } from 'src/domain/interfaces/user.service.interface';
 import { UserRepository } from '../db/mongodb/repositories/user.repository';
 import { USER_REPOSITORY } from 'src/domain/interfaces/user.repository.interface';
 import { USER_MODEL } from 'src/domain/interfaces/user.model.interface';
+import { LOGGER_PROVIDER } from 'src/domain/interfaces/logger.interface';
+import { WinstonLogger } from '../logging/winston.logger';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: SUser.name, schema: UserSchema }]),
   ],
   providers: [
+    {
+      provide: LOGGER_PROVIDER,
+      useClass: WinstonLogger,
+    },
     UserResolver,
     { provide: USER_SERVICE, useClass: UserService },
     { provide: USER_REPOSITORY, useClass: UserRepository },

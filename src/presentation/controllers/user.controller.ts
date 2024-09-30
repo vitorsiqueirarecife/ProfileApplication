@@ -20,9 +20,7 @@ export class UserController {
   async createUser(@Body() createUserDto: CreateUserDto) {
     const { email, name, password } = createUserDto;
 
-    this.logger.info(
-      `UserController.createUser.CreatingUserWithEmail: ${email}`,
-    );
+    this.logger.info(`UserController.createUser.create: ${email}`);
 
     await this.userService.create({
       id: '',
