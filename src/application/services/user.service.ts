@@ -1,3 +1,4 @@
+import { CACHE_MANAGER, Cache } from '@nestjs/cache-manager';
 import { Injectable, Inject } from '@nestjs/common';
 import { IUser } from 'src/domain/interfaces/user.interface';
 import {
