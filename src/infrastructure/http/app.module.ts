@@ -12,12 +12,15 @@ import { graphqlConfig } from '../graphql/graphql.config';
 import { mongooseConfig } from '../db/mongodb/mongoose.config';
 import { globalProviders } from '../providers/global.providers';
 import { redisOptions } from '../cache/redis.config';
+import { ThrottlerModule } from '@nestjs/throttler';
+import { throttlerConfig } from '../throttler/throttler.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     CacheModule.registerAsync(redisOptions),
     MongooseModule.forRootAsync(mongooseConfig),
+    ThrottlerModule.forRootAsync(throttlerConfig),
     GraphQLModule.forRoot<ApolloDriverConfig>(graphqlConfig),
     UserModule,
   ],

@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@apollo/server": "^4.11.0",
+    "@nest-lab/throttler-storage-redis": "^1.0.0",
     "@nestjs/apollo": "^12.2.0",
     "@nestjs/cache-manager": "^2.2.2",
     "@nestjs/common": "^10.0.0",
@@ -29,6 +30,7 @@
     "@nestjs/graphql": "^12.2.0",
     "@nestjs/mongoose": "^10.0.10",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/throttler": "^6.2.1",
     "apollo-server-express": "^3.13.0",
     "cache-manager": "^4.1.0",
     "cache-manager-redis-store": "2",
@@ -36,6 +38,7 @@
     "class-validator": "^0.14.1",
     "graphql": "^16.9.0",
     "helmet": "^8.0.0",
+    "ioredis": "^5.4.1",
     "mongoose": "^8.6.3",
     "morgan": "^1.10.0",
     "redis": "^4.7.0",
