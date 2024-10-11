@@ -15,4 +15,4 @@ $ yarn start:dev
 ```
 
 ## Base architecture proposal
-![image](./readme/image.png)
+![image](./readme/design.png)
