@@ -3,7 +3,7 @@ import { WinstonLogger } from '../logging/winston.logger';
 import { AllExceptionsFilter } from '../exceptions/all-exceptions.filter';
 import { APP_GUARD, APP_PIPE } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
-import { ThrottlerGuard } from '@nestjs/throttler';
+import { AllThrottlerGuard } from 'src/application/guards/all-throttler.guard';
 
 export const globalProviders = [
   {
@@ -17,6 +17,6 @@ export const globalProviders = [
   AllExceptionsFilter,
   {
     provide: APP_GUARD,
-    useClass: ThrottlerGuard,
+    useClass: AllThrottlerGuard,
   },
 ];
