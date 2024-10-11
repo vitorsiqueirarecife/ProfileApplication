@@ -1,4 +1,4 @@
-run = "yarn start:dev"
+run = "yarn start:replit"
 entrypoint = "index.ts"
 hidden = [".config", "package-lock.json", "tsconfig.json"]
 modules = ["nodejs-20"]
