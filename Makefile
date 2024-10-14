@@ -16,3 +16,5 @@ setup:
 	make redis-pull
 	make redis-run
 	
+dev:
+	cd ./mic-users && yarn start:dev
