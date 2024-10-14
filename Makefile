@@ -15,6 +15,7 @@ setup:
 	make mongo-run
 	make redis-pull
 	make redis-run
+	cd ./mic-users && yarn install --force
 	
 dev:
 	cd ./mic-users && yarn start:dev

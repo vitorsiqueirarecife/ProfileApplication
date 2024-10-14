@@ -5,13 +5,13 @@
 ## Project setup
 
 ```bash
-$ yarn install
+$ make setup
 ```
 
 ## Compile and run the project
 
 ```bash
-$ yarn start:dev
+$ make dev
 ```
 
 ## Base architecture proposal
