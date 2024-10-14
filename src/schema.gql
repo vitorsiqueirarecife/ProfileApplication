@@ -2,14 +2,12 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type User {
+type UserBase {
   id: ID!
   name: String!
   email: String!
-  password: String!
-  passwordConfirmation: String!
 }
 
 type Query {
-  searchUsers(name: String!): [User!]!
+  searchUsers(name: String!): [UserBase!]!
 }

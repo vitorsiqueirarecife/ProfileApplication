@@ -1,6 +1,5 @@
-export interface IUser {
-  id: string;
-  name: string;
-  email: string;
+import { IUserBase } from './user-base.interface';
+
+export interface IUser extends IUserBase {
   password: string;
 }
