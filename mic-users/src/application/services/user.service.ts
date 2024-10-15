@@ -6,6 +6,7 @@ import {
 } from 'src/domain/interfaces/user.repository.interface';
 import { IUserService } from 'src/domain/interfaces/user.service.interface';
 import { v1 as uuid } from 'uuid';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService implements IUserService {
@@ -13,6 +14,11 @@ export class UserService implements IUserService {
 
   async create(user: IUser): Promise<IUser> {
     user.id = uuid();
+
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(user.password, salt);
+    user.password = hashedPassword;
+
     return await this.userModel.create(user);
   }
 
