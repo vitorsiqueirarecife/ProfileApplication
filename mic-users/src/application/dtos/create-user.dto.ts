@@ -1,4 +1,5 @@
 import { IsString, IsEmail, MinLength } from 'class-validator';
+import { Match } from '../common/decorators/match.decorator';
 
 export class CreateUserDto {
   @IsString({ message: 'The name must be a string.' })
@@ -13,5 +14,6 @@ export class CreateUserDto {
   password: string;
 
   @IsString({ message: 'The password confirmation must be a string.' })
+  @Match('password', { message: 'passwordConfirmation must match password' })
   passwordConfirmation: string;
 }
