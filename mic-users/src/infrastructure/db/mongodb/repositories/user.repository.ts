@@ -1,4 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
+import UserParse from 'src/application/common/parsers/user.parse';
 import { IUser } from 'src/domain/interfaces/user.interface';
 
 import {
@@ -6,7 +7,6 @@ import {
   USER_MODEL,
 } from 'src/domain/interfaces/user.model.interface';
 import { IUserRepository } from 'src/domain/interfaces/user.repository.interface';
-import UserParse from 'src/infrastructure/parsers/user.parse';
 
 @Injectable()
 export class UserRepository implements IUserRepository {

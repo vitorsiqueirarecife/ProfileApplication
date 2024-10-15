@@ -1,5 +1,5 @@
 import { IUser } from 'src/domain/interfaces/user.interface';
-import { SUser } from '../db/mongodb/schemas/user.schema';
+import { SUser } from 'src/infrastructure/db/mongodb/schemas/user.schema';
 
 class UserParse {
   static toSUser(user: IUser): SUser {
