@@ -9,8 +9,10 @@ import { IUserService } from 'src/domain/interfaces/user/user.service.interface'
 
 @Injectable()
 export class UserService implements IUserService {
-  constructor(@Inject(USER_REPOSITORY) private userModel: IUserRepository) {}
+  constructor(
+    @Inject(USER_REPOSITORY) private userRepository: IUserRepository,
+  ) {}
   async findByEmail(email: string): Promise<IUser> {
-    return await this.userModel.findByEmail(email);
+    return await this.userRepository.findByEmail(email);
   }
 }

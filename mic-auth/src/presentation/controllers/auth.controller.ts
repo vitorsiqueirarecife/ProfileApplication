@@ -1,4 +1,5 @@
-import { Body, Controller, Inject, Post } from '@nestjs/common';
+import { Body, Controller, Inject, Post, Res } from '@nestjs/common';
+import { Response } from 'express';
 import { LoginDto } from 'src/application/dtos/login.dto';
 import {
   IAuthService,
@@ -9,7 +10,7 @@ import {
   ILogger,
 } from 'src/domain/interfaces/logger.interface';
 
-@Controller('users')
+@Controller('auth')
 export class AuthController {
   constructor(
     @Inject(LOGGER_PROVIDER) private readonly logger: ILogger,
@@ -17,14 +18,20 @@ export class AuthController {
   ) {}
 
   @Post()
-  async login(@Body() loginDto: LoginDto) {
+  async login(@Body() loginDto: LoginDto, @Res() res: Response) {
     const { email, password } = loginDto;
 
     this.logger.info(`AuthController.login.login: ${email}`);
 
-    await this.authService.login({
+    const token = await this.authService.login({
       email,
       password,
+    });
+
+    res.cookie('jwt', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 3600000,
     });
 
     return { message: 'Authentication successfully' };

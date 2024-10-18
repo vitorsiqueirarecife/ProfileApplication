@@ -10,7 +10,9 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService implements IUserService {
-  constructor(@Inject(USER_REPOSITORY) private userModel: IUserRepository) {}
+  constructor(
+    @Inject(USER_REPOSITORY) private userRepository: IUserRepository,
+  ) {}
 
   async create(user: IUser): Promise<IUser> {
     user.id = uuid();
@@ -19,10 +21,10 @@ export class UserService implements IUserService {
     const hashedPassword = await bcrypt.hash(user.password, salt);
     user.password = hashedPassword;
 
-    return await this.userModel.create(user);
+    return await this.userRepository.create(user);
   }
 
   async findByName(name: string): Promise<IUser[]> {
-    return await this.userModel.findByName(name);
+    return await this.userRepository.findByName(name);
   }
 }
