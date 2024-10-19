@@ -1,4 +1,11 @@
-import { Body, Controller, Inject, Post, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpStatus,
+  Inject,
+  Post,
+  Res,
+} from '@nestjs/common';
 import { Response } from 'express';
 import { LoginDto } from 'src/application/dtos/login.dto';
 import {
@@ -19,21 +26,25 @@ export class AuthController {
 
   @Post()
   async login(@Body() loginDto: LoginDto, @Res() res: Response) {
-    const { email, password } = loginDto;
+    try {
+      this.logger.info(`AuthController.login.login: ${loginDto.email}`);
 
-    this.logger.info(`AuthController.login.login: ${email}`);
+      const token = await this.authService.login({
+        email: loginDto.email,
+        password: loginDto.password,
+      });
 
-    const token = await this.authService.login({
-      email,
-      password,
-    });
+      res.cookie('jwt', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 3600000,
+      });
 
-    res.cookie('jwt', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      maxAge: 3600000,
-    });
-
-    return { message: 'Authentication successfully' };
+      return res.status(HttpStatus.OK).json({ message: 'Login successful' });
+    } catch {
+      return res
+        .status(HttpStatus.UNAUTHORIZED)
+        .json({ message: 'Invalid credentials' });
+    }
   }
 }

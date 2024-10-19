@@ -18,10 +18,16 @@ export class AuthService implements IAuthService {
   async login(user: Pick<IUser, 'email' | 'password'>): Promise<string> {
     const { email, password } = user;
     const foundUser = await this.userService.findByEmail(email);
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      throw new UnauthorizedException();
+
+    if (!foundUser) {
+      throw new UnauthorizedException('User not found');
     }
+    const isMatch = await bcrypt.compare(password, foundUser.password);
+
+    if (!isMatch) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
     const payload = { sub: foundUser.id, username: foundUser.email };
     return this.jwtService.signAsync(payload);
   }

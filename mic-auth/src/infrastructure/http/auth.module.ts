@@ -8,7 +8,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { jwtOptions } from '../security/jwt.config';
 
 @Module({
-  imports: [JwtModule.register(jwtOptions), UserModule],
+  imports: [JwtModule.registerAsync(jwtOptions), UserModule],
   providers: [
     {
       provide: LOGGER_PROVIDER,

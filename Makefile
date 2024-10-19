@@ -19,8 +19,8 @@ setup:
 	make mongo-run
 	make redis-pull
 	make redis-run
-	cd MIC_USER_DIR && yarn install --force
-	cd MIC_AUTH_DIR && yarn install --force
+	cd $(MIC_USER_DIR) && yarn install --force
+	cd $(MIC_AUTH_DIR) && yarn install --force
 
 dev:
 	osascript -e 'tell application "Terminal" to do script "cd $(MIC_USER_DIR) && yarn start:dev"'
