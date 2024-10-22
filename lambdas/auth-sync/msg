@@ -1,0 +1,7 @@
+{
+  "eventType":"user_created",
+  "user":{
+    "id":"1234",
+    "email":"vitormelosiqueira@gmail.com"
+  }
+}
