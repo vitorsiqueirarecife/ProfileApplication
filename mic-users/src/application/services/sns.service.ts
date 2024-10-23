@@ -4,7 +4,7 @@ import { IEventService } from 'src/domain/interfaces/events.service.interface';
 import {
   SNS_CLIENT,
   SNS_TOPIC_ARN,
-} from '../../infrastructure/events/sns.config';
+} from '../../infrastructure/events/aws/sns.config';
 
 @Injectable()
 export class SnsService implements IEventService {

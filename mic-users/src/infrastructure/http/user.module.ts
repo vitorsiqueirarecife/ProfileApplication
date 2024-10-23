@@ -10,7 +10,7 @@ import { USER_REPOSITORY } from 'src/domain/interfaces/user/user.repository.inte
 import { USER_MODEL } from 'src/domain/interfaces/user/user.model.interface';
 import { LOGGER_PROVIDER } from 'src/domain/interfaces/logger.interface';
 import { WinstonLogger } from '../logging/winston.logger';
-import { EventsModule } from './events.module';
+import { EventsModule } from '../events/events.module';
 
 @Module({
   imports: [

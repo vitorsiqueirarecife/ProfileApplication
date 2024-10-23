@@ -9,7 +9,7 @@ import {
   SNS_TOPIC_ARN,
   snsConfig,
   topicArnConfig,
-} from '../events/sns.config';
+} from './aws/sns.config';
 
 @Module({
   imports: [ConfigModule],
