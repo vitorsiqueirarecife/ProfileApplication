@@ -10,10 +10,12 @@ import { USER_REPOSITORY } from 'src/domain/interfaces/user.repository.interface
 import { USER_MODEL } from 'src/domain/interfaces/user.model.interface';
 import { LOGGER_PROVIDER } from 'src/domain/interfaces/logger.interface';
 import { WinstonLogger } from '../logging/winston.logger';
+import { EventsModule } from './events.module';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: SUser.name, schema: UserSchema }]),
+    EventsModule,
   ],
   providers: [
     {

@@ -24,10 +24,10 @@ export const handler: SNSHandler = async (event: SNSEvent) => {
 
   for (const record of event.Records) {
     const message = JSON.parse(record.Sns.Message);
-    const { eventType, user } = message;
+    const { type, data: user } = message;
 
     try {
-      if (eventType === "user_created") {
+      if (type === "user_created") {
         const existingUser = await collection.findOne({
           $or: [{ id: user.id }, { email: user.email }],
         });
@@ -38,7 +38,7 @@ export const handler: SNSHandler = async (event: SNSEvent) => {
 
         await collection.insertOne(user);
         console.log("User created successfully");
-      } else if (eventType === "user_updated") {
+      } else if (type === "user_updated") {
         await collection.updateOne(
           { id: user.id },
           { $set: user },
