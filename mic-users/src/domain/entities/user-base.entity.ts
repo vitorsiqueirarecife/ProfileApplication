@@ -1,5 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { IUserBase } from '../interfaces/user-base.interface';
+import { IUserBase } from '../interfaces/user/user-base.interface';
 
 @ObjectType()
 export class UserBase implements IUserBase {

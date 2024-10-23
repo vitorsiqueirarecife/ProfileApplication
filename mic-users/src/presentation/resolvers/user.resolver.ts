@@ -5,11 +5,11 @@ import {
   ILogger,
   LOGGER_PROVIDER,
 } from 'src/domain/interfaces/logger.interface';
-import { IUserBase } from 'src/domain/interfaces/user-base.interface';
+import { IUserBase } from 'src/domain/interfaces/user/user-base.interface';
 import {
   IUserService,
   USER_SERVICE,
-} from 'src/domain/interfaces/user.service.interface';
+} from 'src/domain/interfaces/user/user.service.interface';
 
 @Resolver(() => UserBase)
 export class UserResolver {

@@ -3,7 +3,7 @@ import { CreateUserDto } from 'src/application/dtos/create-user.dto';
 import {
   IUserService,
   USER_SERVICE,
-} from 'src/domain/interfaces/user.service.interface';
+} from 'src/domain/interfaces/user/user.service.interface';
 import {
   LOGGER_PROVIDER,
   ILogger,

@@ -4,7 +4,7 @@ import {
   SUser,
   UserDocument,
 } from 'src/infrastructure/db/mongodb/schemas/user.schema';
-import { IUserModel } from 'src/domain/interfaces/user.model.interface';
+import { IUserModel } from 'src/domain/interfaces/user/user.model.interface';
 
 export class MongooseUserModel implements IUserModel {
   constructor(

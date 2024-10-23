@@ -1,4 +1,4 @@
-import { IUser } from 'src/domain/interfaces/user.interface';
+import { IUser } from 'src/domain/interfaces/user/user.interface';
 import { SUser } from 'src/infrastructure/db/mongodb/schemas/user.schema';
 
 class UserParse {
